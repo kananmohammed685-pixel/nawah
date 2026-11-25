@@ -15,14 +15,14 @@ from pydantic import BaseModel
 from sqlalchemy import inspect
 from sqlalchemy.orm import Session
 
-from database import Base, engine, get_db, SessionLocal
+from database import Base, engine, get_db, SessionLocal, ON_VERCEL
 from models import Variety, Company, Suggestion, Analysis
 from seed import seed_if_empty
 import ai
 
 # ---------- الإعدادات ----------
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "change-me")   # غيّريها!
-UPLOAD_DIR = "uploads"
+UPLOAD_DIR = "/tmp/uploads" if ON_VERCEL else "uploads"   # على Vercel الكتابة في /tmp فقط
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/webp"}
 MAX_SIZE = 5 * 1024 * 1024  # 5 ميجابايت
 

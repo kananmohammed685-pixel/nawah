@@ -494,6 +494,23 @@
     $("status").classList.toggle("error", !!isError);
   }
 
+  // نصغّر الصورة قبل الرفع (أطول ضلع 1600 بكسل) حتى لا تتجاوز حد الاستضافة (4.5 ميجابايت)
+  // ولأن الذكاء الاصطناعي لا يحتاج صورة أكبر من ذلك. لو فشل التصغير نرسل الصورة كما هي.
+  async function shrink(file) {
+    try {
+      const bmp = await createImageBitmap(file);
+      const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(bmp.width * scale);
+      canvas.height = Math.round(bmp.height * scale);
+      canvas.getContext("2d").drawImage(bmp, 0, 0, canvas.width, canvas.height);
+      const blob = await new Promise(ok => canvas.toBlob(ok, "image/jpeg", 0.85));
+      return blob ? new File([blob], "photo.jpg", { type: "image/jpeg" }) : file;
+    } catch (e) {
+      return file;
+    }
+  }
+
   async function analyze(file) {
     if (!file) return;
     lastData = null;
@@ -505,10 +522,10 @@
     showView("result");
 
     const form = new FormData();
-    form.append("file", file);
+    form.append("file", await shrink(file));
     try {
       const res = await fetch("/api/analyze", { method: "POST", body: form });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));       // لو الرد ليس JSON (مثل خطأ من الاستضافة)
       if (!res.ok) throw new Error(data.detail || t("errorGeneric"));
       lastData = data;
       analysisId = data.analysis_id;
