@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة الإدارة | نواة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --palm:#C4640F; --palm-soft:#F3E5DA; --gold:#C4640F; --mist:#F6F6F6;
+      --ink:#2A2018; --muted:#7B736B; --line:#E1DFDB; --danger:#A23B2E;
+      --font-display:"Amiri","Times New Roman",serif;
+      --font-body:"Tajawal","Segoe UI",Tahoma,sans-serif;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:var(--font-body); background:var(--mist); color:var(--ink); line-height:1.7; }
+    :focus-visible { outline:3px solid var(--gold); outline-offset:2px; }
+    header { padding:18px 20px; border-bottom:1px solid var(--line); }
+    header h1 { margin:0; font-family:var(--font-display); font-size:30px; color:var(--palm); }
+    main { max-width:560px; margin:0 auto; padding:20px; }
+    h2 { font-family:var(--font-display); font-size:26px; margin:0 0 8px; color:var(--palm); }
+    .box { background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:18px; }
+    input { width:100%; padding:12px; margin:6px 0; border:1px solid var(--line); border-radius:12px; font-family:inherit; font-size:16px; }
+    .btn { border:0; padding:10px 18px; border-radius:12px; color:#fff; cursor:pointer; font-family:inherit; font-size:15px; font-weight:600; }
+    .btn.main { background:var(--palm); } .btn.ok { background:var(--palm); } .btn.no { background:#fff; color:var(--danger); border:1.5px solid var(--danger); }
+    .muted { color:var(--muted); font-size:14px; }
+    .error { color:var(--danger); }
+    .item { padding:14px 0; border-top:1px solid var(--line); }
+    .item b { font-size:17px; color:var(--palm); }
+    .item .acts { margin-top:8px; display:flex; gap:8px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+<header><h1>لوحة الإدارة</h1></header>
+
+<main>
+  <!-- تسجيل الدخول: كلمة المرور تُرسل مع كل طلب في Header -->
+  <div id="loginBox" class="box">
+    <h2>تسجيل الدخول</h2>
+    <input type="password" id="pw" placeholder="كلمة مرور المدير" autocomplete="current-password">
+    <button class="btn main" type="button" onclick="login()">دخول</button>
+    <p id="msg" class="muted" role="status"></p>
+  </div>
+
+  <div id="panel" class="hidden">
+    <div class="box">
+      <h2>دقة التحليل</h2>
+      <p id="stats" class="muted"></p>
+    </div>
+    <div class="box">
+      <h2>اقتراحات الشركات</h2>
+      <div id="list"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const $ = id => document.getElementById(id);
+  let password = "";
+
+  // دالة مساعدة: ترسل الطلب مع كلمة المرور
+  function adminFetch(url, method = "GET") {
+    return fetch(url, { method, headers: { "X-Admin-Password": password } });
+  }
+
+  async function login() {
+    password = $("pw").value;
+    const res = await adminFetch("/api/admin/suggestions");
+    if (!res.ok) { $("msg").textContent = "كلمة المرور غير صحيحة."; $("msg").classList.add("error"); return; }
+    $("loginBox").classList.add("hidden");
+    $("panel").classList.remove("hidden");
+    render(await res.json());
+    loadStats();
+  }
+
+  async function loadStats() {
+    const s = await (await fetch("/api/stats")).json();
+    $("stats").textContent = s.accuracy === null
+      ? `عدد التحليلات: ${s.total_analyses}. لا توجد تقييمات بعد.`
+      : `عدد التحليلات: ${s.total_analyses}. الدقة: ${Math.round(s.accuracy * 100)}% (من ${s.answered} تقييم).`;
+  }
+
+  // ننشئ العناصر بـ textContent حتى لا يُنفَّذ أي كود داخل اسم الشركة
+  function render(items) {
+    const box = $("list");
+    box.innerHTML = "";
+    if (!items.length) {
+      const p = document.createElement("p"); p.className = "muted"; p.textContent = "لا توجد اقتراحات بانتظار المراجعة.";
+      box.appendChild(p); return;
+    }
+    items.forEach(s => {
+      const row = document.createElement("div"); row.className = "item";
+      const name = document.createElement("b"); name.textContent = s.name;
+      const place = [s.country, s.city].filter(Boolean).join("، ");
+      const city = document.createElement("span"); city.className = "muted"; city.textContent = place ? "  " + place : "";
+      const acts = document.createElement("div"); acts.className = "acts";
+      const ok = document.createElement("button"); ok.className = "btn ok"; ok.type = "button"; ok.textContent = "موافقة";
+      const no = document.createElement("button"); no.className = "btn no"; no.type = "button"; no.textContent = "رفض";
+      ok.onclick = () => act(s.id, "approve");
+      no.onclick = () => act(s.id, "reject");
+      acts.append(ok, no);
+      row.append(name, city, acts);
+      box.appendChild(row);
+    });
+  }
+
+  async function act(id, action) {
+    await adminFetch(`/api/admin/suggestions/${id}/${action}`, "POST");
+    render(await (await adminFetch("/api/admin/suggestions")).json());
+  }
+</script>
+</body>
+</html>

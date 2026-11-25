@@ -1,0 +1,7 @@
+nawah.db
+uploads/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+companies.csv
+analyses.csv
