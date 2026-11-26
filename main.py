@@ -92,6 +92,7 @@ async def analyze(file: UploadFile = File(...), db: Session = Depends(get_db)):
         "analysis_id": analysis.id,
         "recognized": variety is not None,
         "confidence": result["confidence"],
+        "demo": bool(result.get("demo")),      # True = نتيجة تجريبية وليست تحليلاً حقيقياً
         "variety": None if not variety else {
             "name_ar": variety.name_ar,
             "name_en": variety.name_en,

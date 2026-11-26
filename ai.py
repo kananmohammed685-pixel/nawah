@@ -13,6 +13,7 @@ ai.py
 import base64
 import json
 import os
+import random
 import urllib.error
 import urllib.request
 
@@ -28,6 +29,13 @@ def identify_date(image_bytes: bytes, media_type: str, variety_names: list[str])
     """
     # المفتاح يُقرأ من متغير البيئة ANTHROPIC_API_KEY
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
+
+    # الوضع التجريبي: إذا ما فيه مفتاح وكان DEMO_MODE=1 نرجّع نوعاً عشوائياً (محاكاة فقط!)
+    # الواجهة تعرض شارة "تجريبي" ليعرف أي شخص أن النتيجة ليست تحليلاً حقيقياً.
+    if not api_key and os.getenv("DEMO_MODE") == "1":
+        return {"variety": random.choice(variety_names),
+                "confidence": round(random.uniform(0.7, 0.95), 2), "demo": True}
+
     if not api_key or not api_key.isascii():
         raise RuntimeError("مفتاح ANTHROPIC_API_KEY غير موجود أو غير صحيح. ضعي المفتاح الحقيقي (يبدأ بـ sk-ant-).")
 

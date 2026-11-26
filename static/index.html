@@ -560,6 +560,7 @@
     $("resConf").classList.remove("hidden");
     $("resConf").textContent = data.confidence < 0.6 ? t("lowConf")
       : `${t("confidence")} ${Math.round(data.confidence * 100)}%`;
+    if (data.demo) $("resConf").textContent = (lang === "ar" ? "نتيجة تجريبية (محاكاة)" : "Demo result (simulated)");
     $("vCal100").textContent = fmt(v.calories_per_100g);
     $("vSugar").textContent = fmt(v.sugar_per_100g);
     $("vCalOne").textContent = fmt(v.calories_per_date);
