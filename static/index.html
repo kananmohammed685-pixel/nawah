@@ -52,7 +52,7 @@
       padding: 12px 18px; border-bottom: 1px solid var(--line);
     }
     .brand { display: flex; align-items: center; gap: 8px; }
-    .brand svg { width: 38px; height: 38px; }
+    .brand img { width: 44px; height: auto; }
     .brand .ar { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--orange); line-height: 1; }
     .brand .en { font-size: 14px; letter-spacing: .14em; color: var(--muted); }
     .lang {
@@ -201,9 +201,9 @@
       transition: opacity .6s ease;
     }
     #splash.out { opacity: 0; pointer-events: none; }
-    #splash svg { width: 260px; height: 208px; animation: rise .9s ease both; }
-    #splash .ar { font-family: var(--font-display); font-weight: 700; font-size: 48px; color: #9A4B16; line-height: 1.2; margin-top: 18px; }
-    #splash .en { letter-spacing: .5em; color: #C9A98C; font-size: 15px; padding-inline-start: .5em; }
+    #splash img { width: 300px; max-width: 80vw; animation: rise .9s ease both; }
+    #splash .ar { font-family: var(--font-display); font-weight: 700; font-size: 46px; color: #B5714A; line-height: 1.2; margin-top: 28px; }
+    #splash .en { letter-spacing: .5em; color: #DDB89C; font-size: 15px; padding-inline-start: .5em; }
     @keyframes rise { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
 
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
@@ -274,15 +274,15 @@
 
 <!-- ===== شاشة الافتتاح ===== -->
 <div id="splash" aria-hidden="true">
-  <svg viewBox="0 0 250 200"><use href="#date-art"/></svg>
-  <div class="ar">نواة</div>
-  <div class="en">NAWAH</div>
+  <img src="/static/date.png" alt="">
+  <div class="ar">نـواة</div>
+  <div class="en">nawah</div>
 </div>
 
 <div class="app">
   <header class="top">
     <div class="brand">
-      <svg viewBox="0 0 48 48"><use href="#date-mini"/></svg>
+      <img src="/static/date-mini.png" alt="">
       <span class="ar">نواة</span><span class="en">nawah</span>
     </div>
     <button class="lang" id="langBtn" type="button" aria-label="Language"><b id="langAr" class="on">AR</b> / <b id="langEn">EN</b></button>
