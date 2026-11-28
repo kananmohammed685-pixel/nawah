@@ -124,77 +124,6 @@
     .card select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #D9D9D9; font-size: 16px; margin: 12px 0 10px; background: #fff; }
     .unknown { text-align: center; color: var(--muted); padding: 10px 6px 22px; }
 
-    /* ===== الشركات ===== */
-    .companies { padding: 14px 16px 24px; }
-    .searchbar { display: flex; gap: 10px; align-items: center; }
-    .search { position: relative; flex: 1; }
-    .search input {
-      width: 100%; height: 46px; border: 1px solid #D9D9D9; border-radius: 12px; background: #fff;
-      padding: 0 14px; padding-inline-end: 42px; font-size: 15px;
-    }
-    .search svg { position: absolute; inset-inline-end: 13px; top: 13px; color: var(--muted); }
-    .add-btn {
-      flex: none; width: 46px; height: 46px; border-radius: 12px; border: 1.5px solid var(--orange);
-      background: #fff; color: var(--orange); display: grid; place-items: center; cursor: pointer;
-    }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 6px; border: 1px solid #D9D9D9; background: #fff;
-      border-radius: 999px; padding: 6px 16px; font-size: 14px; cursor: pointer; color: var(--ink);
-    }
-    .chip svg { width: 15px; height: 15px; }
-    .chip.on { background: var(--orange); border-color: var(--orange); color: #fff; font-weight: 700; }
-    .section-title { display: flex; align-items: center; gap: 8px; font-weight: 700; margin: 18px 2px 10px; }
-    .section-title svg { color: var(--gold); fill: var(--gold); }
-
-    .co {
-      background: var(--card); border: 1px solid var(--line); border-radius: 18px;
-      padding: 16px; margin-bottom: 14px;
-    }
-    .co.featured { border-color: #E2B38D; }
-    .co-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-    .co-name { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 700; line-height: 1.4; }
-    .co-name svg { width: 17px; height: 17px; color: var(--gold); fill: var(--gold); }
-    .co-en { color: var(--muted); font-size: 14px; }
-    .rating { text-align: center; flex: none; }
-    .rating b { display: flex; align-items: center; gap: 4px; color: var(--orange); font-size: 19px; }
-    .rating b svg { width: 16px; height: 16px; color: var(--gold); fill: var(--gold); }
-    .rating span { font-size: 11.5px; color: var(--muted); }
-    .co-desc { color: var(--muted); font-size: 14px; margin: 10px 0; }
-    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
-    .country { background: var(--green-bg); color: var(--green); border-radius: 999px; padding: 1px 12px; font-weight: 700; }
-    .meta .city { display: inline-flex; align-items: center; gap: 3px; }
-    .meta .city svg { width: 14px; height: 14px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tag { background: #E6E4E0; border-radius: 8px; padding: 2px 12px; font-size: 13px; font-weight: 700; }
-    .contact {
-      display: flex; justify-content: space-between; align-items: center; gap: 10px;
-      border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; font-size: 13.5px; color: var(--muted);
-    }
-    .contact a, .contact span { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; direction: ltr; }
-    .contact svg { color: var(--orange); width: 16px; height: 16px; }
-    .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
-
-    /* نافذة اقتراح شركة */
-    .overlay { position: absolute; inset: 0; z-index: 30; background: rgba(30,20,10,.45); display: flex; align-items: flex-end; }
-    .sheet { background: var(--bg); width: 100%; border-radius: 22px 22px 0 0; padding: 20px; max-height: 92%; overflow-y: auto; }
-    .sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .sheet-head h3 { margin: 0; font-family: var(--font-display); font-size: 26px; }
-    .x { border: 0; background: #E9E7E3; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--ink); }
-    .sheet input { width: 100%; height: 46px; margin: 5px 0; border: 1px solid #D9D9D9; border-radius: 10px; padding: 0 14px; font-size: 16px; background: #fff; }
-
-    /* ===== شريط التنقل السفلي ===== */
-    .tabs { display: none; /* أخفينا قسم الشركات: لا حاجة لشريط التبويبات */ }
-    .tabs-old { flex: none; display: flex; border-top: 1px solid var(--line); background: var(--bg); padding: 8px 12px 4px; }
-    .tabs button {
-      flex: 1; border: 0; background: none; cursor: pointer; color: var(--muted); font-size: 13px; font-weight: 500;
-      display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 2px;
-    }
-    .tabs .ico { width: 54px; height: 40px; border-radius: 14px; display: grid; place-items: center; }
-    .tabs button.active { color: var(--orange); font-weight: 700; }
-    .tabs button.active .ico { background: var(--tile); }
-    .tabs button.active::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
-    .foot { flex: none; text-align: center; font-size: 11px; letter-spacing: .22em; color: #C3BCB3; padding: 8px 0 10px; border-top: 1px solid var(--line); }
 
     /* ===== شاشة الافتتاح ===== */
     #splash {
@@ -229,18 +158,9 @@
   <!-- أيقونات خطية -->
   <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></symbol>
   <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
-  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
   <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
   <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
-  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
 
   <!-- تمرة صغيرة للشعار -->
   <symbol id="date-mini" viewBox="0 0 48 48">
@@ -344,48 +264,9 @@
         <button class="btn primary hidden" type="button" id="againBtn"><svg class="i"><use href="#i-camera"/></svg><span data-i18n="again"></span></button>
       </div>
     </section>
-
-    <!-- ===== الشركات ===== -->
-    <section class="companies hidden" id="view-companies">
-      <div class="searchbar">
-        <div class="search">
-          <input id="searchInput" type="search" data-i18n-ph="searchPh" autocomplete="off">
-          <svg class="i"><use href="#i-search"/></svg>
-        </div>
-        <button class="add-btn" type="button" id="openSuggest" aria-label="+"><svg class="i"><use href="#i-plus"/></svg></button>
-      </div>
-      <div class="chips" id="chips"></div>
-      <div id="companyList"></div>
-    </section>
   </main>
 
-  <nav class="tabs" aria-label="Navigation">
-    <button type="button" id="tabHome" class="active"><span class="ico"><svg class="i"><use href="#i-camera"/></svg></span><span data-i18n="tabCamera"></span></button>
-    <button type="button" id="tabCompanies"><span class="ico"><svg class="i"><use href="#i-building"/></svg></span><span data-i18n="tabCompanies"></span></button>
-  </nav>
   <footer class="foot">NAWAH</footer>
-
-  <!-- نافذة اقتراح شركة -->
-  <div class="overlay hidden" id="suggestOverlay">
-    <div class="sheet" role="dialog" aria-modal="true">
-      <div class="sheet-head">
-        <h3 data-i18n="suggestTitle"></h3>
-        <button class="x" type="button" id="closeSuggest" aria-label="close"><svg class="i"><use href="#i-x"/></svg></button>
-      </div>
-      <input id="sName" data-i18n-ph="phName" maxlength="80">
-      <input id="sCountry" list="countries" data-i18n-ph="phCountry" maxlength="40">
-      <datalist id="countries">
-        <option value="السعودية"><option value="الإمارات"><option value="البحرين"><option value="الأردن"><option value="ليبيا">
-        <option value="مصر"><option value="تونس"><option value="الجزائر"><option value="العراق"><option value="الكويت">
-        <option value="عمان"><option value="قطر"><option value="فلسطين"><option value="المغرب"><option value="السودان">
-      </datalist>
-      <input id="sCity" data-i18n-ph="phCity" maxlength="60">
-      <input id="sSite" data-i18n-ph="phSite" maxlength="120" inputmode="url" dir="ltr">
-      <input id="sPhone" data-i18n-ph="phPhone" maxlength="30" inputmode="tel" dir="ltr">
-      <button class="btn primary" type="button" id="sendSuggestBtn" style="margin-top:12px" data-i18n="sendSuggest"></button>
-      <p class="status" id="sMsg" role="status"></p>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -403,12 +284,6 @@
       unknownTitle: "لم نستطع تحديد النوع", unknownText: "صوّر تمرة واحدة بإضاءة جيدة وخلفية بسيطة، ثم حاول مرة أخرى.",
       isCorrect: "هل النوع صحيح؟", yes: "نعم", no: "لا", sendCorrection: "إرسال التصحيح", pickVariety: "اختر النوع الصحيح",
       thanks: "شكراً لك، ملاحظتك تساعدنا على التحسّن.", again: "حلّل تمرة أخرى",
-      tabCamera: "الكاميرا", tabCompanies: "شركات التمور",
-      searchPh: "ابحث عن شركة أو نوع تمر...", all: "الكل", featured: "شركات مميزة", others: "جميع الشركات",
-      rating: "التقييم", since: "منذ", noResults: "لا توجد شركات مطابقة للبحث.",
-      suggestTitle: "اقترح شركة", phName: "اسم الشركة", phCountry: "الدولة", phCity: "المدينة",
-      phSite: "الموقع الإلكتروني (اختياري)", phPhone: "رقم الهاتف (اختياري)",
-      sendSuggest: "أرسل الاقتراح", suggestOk: "وصل اقتراحك، وسنراجعه قريباً.", suggestNeedName: "اكتب اسم الشركة أولاً."
     },
     en: {
       openCamera: "Open camera", uploadPhoto: "Upload a photo",
@@ -422,19 +297,7 @@
       unknownTitle: "Couldn't identify it", unknownText: "Photograph a single date in good light on a plain background, then try again.",
       isCorrect: "Is this variety correct?", yes: "Yes", no: "No", sendCorrection: "Send correction", pickVariety: "Choose the correct variety",
       thanks: "Thank you, your feedback helps us improve.", again: "Analyze another date",
-      tabCamera: "Camera", tabCompanies: "Date companies",
-      searchPh: "Search a company or date variety...", all: "All", featured: "Featured companies", others: "All companies",
-      rating: "Rating", since: "Since", noResults: "No companies match your search.",
-      suggestTitle: "Suggest a company", phName: "Company name", phCountry: "Country", phCity: "City",
-      phSite: "Website (optional)", phPhone: "Phone (optional)",
-      sendSuggest: "Send suggestion", suggestOk: "Suggestion received. We'll review it soon.", suggestNeedName: "Enter the company name first."
     }
-  };
-  // أسماء الدول بالإنجليزي (لو الدولة غير موجودة هنا تظهر كما هي)
-  const COUNTRY_EN = {
-    "السعودية": "Saudi Arabia", "الإمارات": "UAE", "البحرين": "Bahrain", "الأردن": "Jordan", "ليبيا": "Libya",
-    "مصر": "Egypt", "تونس": "Tunisia", "الجزائر": "Algeria", "العراق": "Iraq", "الكويت": "Kuwait",
-    "عمان": "Oman", "قطر": "Qatar", "فلسطين": "Palestine", "المغرب": "Morocco", "السودان": "Sudan"
   };
 
   const $ = id => document.getElementById(id);
@@ -446,11 +309,7 @@
   let lastData = null;         // آخر نتيجة تحليل (لنعيد عرضها عند تبديل اللغة)
   let currentView = "home";
   let varietyList = [];        // أنواع التمور من القاعدة
-  let companyList = [];        // الشركات من القاعدة
-  let countryFilter = "";      // "" = الكل
-  let searchText = "";
 
-  const countryName = c => (lang === "en" && COUNTRY_EN[c]) || c;
   const varietyName = ar => {
     const v = varietyList.find(x => x.name_ar === ar);
     return lang === "en" && v && v.name_en ? v.name_en : ar;
@@ -465,7 +324,6 @@
     document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
     document.querySelectorAll("[data-i18n-ph]").forEach(el => el.placeholder = t(el.dataset.i18nPh));
     $("correctSelect").setAttribute("aria-label", t("pickVariety"));
-    renderCompanies();
     if (lastData) fillResult(lastData);
   }
   $("langBtn").onclick = () => { lang = lang === "ar" ? "en" : "ar"; applyLang(); };
@@ -475,14 +333,8 @@
     currentView = name;
     $("view-home").classList.toggle("hidden", name !== "home");
     $("view-result").classList.toggle("hidden", name !== "result");
-    $("view-companies").classList.toggle("hidden", name !== "companies");
-    $("tabHome").classList.toggle("active", name !== "companies");
-    $("tabCompanies").classList.toggle("active", name === "companies");
-    if (name === "companies") loadCompanies();
     $("content").scrollTop = 0;
   }
-  $("tabHome").onclick = () => showView(currentView === "companies" ? (lastData ? "result" : "home") : currentView);
-  $("tabCompanies").onclick = () => showView("companies");
 
   /* ============ رفع الصورة وتحليلها ============ */
   $("camBtn").onclick = () => $("camInput").click();
@@ -604,157 +456,6 @@
     $("thanks").classList.remove("hidden"); $("thanks").classList.add("done");
   }
 
-  /* ============ الشركات ============ */
-  // ننشئ العناصر بـ textContent حتى لا يُنفَّذ أي كود داخل أسماء الشركات
-  function el(tag, cls, text) {
-    const n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text !== undefined && text !== null) n.textContent = text;
-    return n;
-  }
-  function icon(name, cls) {
-    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    s.setAttribute("class", "i" + (cls ? " " + cls : ""));
-    const u = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    u.setAttribute("href", "#i-" + name);
-    s.appendChild(u);
-    return s;
-  }
-
-  async function loadCompanies() {
-    await loadVarieties();
-    try { companyList = await (await fetch("/api/companies")).json(); } catch (e) { companyList = []; }
-    renderCompanies();
-  }
-
-  // هل تطابق الشركة نص البحث؟ نبحث في الاسم والوصف والدولة والمدينة والأنواع (بالعربي والإنجليزي)
-  function matchesSearch(c, q) {
-    if (!q) return true;
-    const text = [c.name, c.name_en, c.description, c.country, COUNTRY_EN[c.country], c.city,
-                  ...c.varieties, ...c.varieties.map(v => varietyName(v)), ...c.varieties.map(v => {
-                    const x = varietyList.find(y => y.name_ar === v); return x ? x.name_en : "";
-                  })].join(" ").toLowerCase();
-    return text.includes(q.toLowerCase());
-  }
-
-  function companyCard(c) {
-    const card = el("article", "co" + (c.featured ? " featured" : ""));
-
-    const head = el("div", "co-head");
-    const names = el("div");
-    const nameRow = el("div", "co-name");
-    nameRow.appendChild(el("span", "", lang === "en" && c.name_en ? c.name_en : c.name));
-    if (c.featured) nameRow.appendChild(icon("star"));
-    names.appendChild(nameRow);
-    const second = lang === "en" ? c.name : c.name_en;
-    if (second) names.appendChild(el("div", "co-en", second));
-    head.appendChild(names);
-    if (c.rating !== null && c.rating !== undefined) {
-      const r = el("div", "rating");
-      const b = el("b"); b.appendChild(icon("star")); b.appendChild(el("span", "", Number(c.rating).toFixed(1)));
-      r.appendChild(b); r.appendChild(el("span", "", t("rating")));
-      head.appendChild(r);
-    }
-    card.appendChild(head);
-
-    if (c.description) card.appendChild(el("p", "co-desc", c.description));
-
-    const meta = el("div", "meta");
-    if (c.country) meta.appendChild(el("span", "country", countryName(c.country)));
-    if (c.city) { const s = el("span", "city"); s.appendChild(icon("pin")); s.appendChild(el("span", "", c.city)); meta.appendChild(s); }
-    if (c.founded_year) meta.appendChild(el("span", "", `${t("since")} ${c.founded_year}`));
-    card.appendChild(meta);
-
-    if (c.varieties.length) {
-      const tags = el("div", "tags");
-      c.varieties.forEach(v => tags.appendChild(el("span", "tag", varietyName(v))));
-      card.appendChild(tags);
-    }
-
-    const hasSite = c.website && /^https?:\/\//i.test(c.website);
-    if (hasSite || c.phone) {
-      const contact = el("div", "contact");
-      if (hasSite) {                                            // نعرض الرابط فقط إذا بدأ بـ http
-        const a = el("a");
-        a.href = c.website; a.target = "_blank"; a.rel = "noopener noreferrer";
-        a.appendChild(el("span", "", c.website.replace(/^https?:\/\//i, "").replace(/\/$/, "")));
-        a.appendChild(icon("globe"));
-        contact.appendChild(a);
-      }
-      if (c.phone) {
-        const a = el("a");
-        a.href = "tel:" + c.phone.replace(/[^\d+]/g, "");
-        a.appendChild(el("span", "", c.phone));
-        a.appendChild(icon("phone"));
-        contact.appendChild(a);
-      }
-      card.appendChild(contact);
-    }
-    return card;
-  }
-
-  function renderChips() {
-    const box = $("chips");
-    box.innerHTML = "";
-    const countries = [...new Set(companyList.map(c => c.country).filter(Boolean))];
-    const all = el("button", "chip" + (countryFilter === "" ? " on" : ""));
-    all.type = "button"; all.appendChild(icon("filter")); all.appendChild(el("span", "", t("all")));
-    all.onclick = () => { countryFilter = ""; renderCompanies(); };
-    box.appendChild(all);
-    countries.forEach(c => {
-      const b = el("button", "chip" + (countryFilter === c ? " on" : ""), countryName(c));
-      b.type = "button";
-      b.onclick = () => { countryFilter = c; renderCompanies(); };
-      box.appendChild(b);
-    });
-  }
-
-  function renderCompanies() {
-    renderChips();
-    const box = $("companyList");
-    box.innerHTML = "";
-    const shown = companyList.filter(c =>
-      (!countryFilter || c.country === countryFilter) && matchesSearch(c, searchText.trim()));
-    if (!shown.length) { box.appendChild(el("p", "empty", t("noResults"))); return; }
-
-    const featured = shown.filter(c => c.featured);
-    const others = shown.filter(c => !c.featured);
-    if (featured.length) {
-      const h = el("div", "section-title"); h.appendChild(icon("star")); h.appendChild(el("span", "", t("featured")));
-      box.appendChild(h);
-      featured.forEach(c => box.appendChild(companyCard(c)));
-    }
-    if (others.length) {
-      box.appendChild(el("div", "section-title", t("others")));
-      others.forEach(c => box.appendChild(companyCard(c)));
-    }
-  }
-  $("searchInput").oninput = e => { searchText = e.target.value; renderCompanies(); };
-
-  /* ============ اقتراح شركة ============ */
-  const openSheet = () => { $("sMsg").textContent = ""; $("suggestOverlay").classList.remove("hidden"); $("sName").focus(); };
-  const closeSheet = () => $("suggestOverlay").classList.add("hidden");
-  $("openSuggest").onclick = openSheet;
-  $("closeSuggest").onclick = closeSheet;
-  $("suggestOverlay").onclick = e => { if (e.target === $("suggestOverlay")) closeSheet(); };
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); });
-
-  $("sendSuggestBtn").onclick = async () => {
-    const name = $("sName").value.trim();
-    if (!name) { $("sMsg").textContent = t("suggestNeedName"); $("sMsg").classList.add("error"); return; }
-    const res = await fetch("/api/suggest", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, country: $("sCountry").value, city: $("sCity").value,
-                             website: $("sSite").value, phone: $("sPhone").value })
-    });
-    $("sMsg").classList.toggle("error", !res.ok);
-    $("sMsg").textContent = res.ok ? t("suggestOk") : t("errorGeneric");
-    if (res.ok) {
-      ["sName", "sCountry", "sCity", "sSite", "sPhone"].forEach(id => $(id).value = "");
-      setTimeout(closeSheet, 1400);
-    }
-  };
 
   /* ============ التشغيل الأول ============ */
   applyLang();

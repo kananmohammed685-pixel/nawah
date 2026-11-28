@@ -1,4 +1,3 @@
--- قاعدة بيانات نواة (SQL). تُنفَّذ على SQLite:  sqlite3 nawah.db < nawah_database.sql
 BEGIN TRANSACTION;
 CREATE TABLE analyses (
 	id INTEGER NOT NULL, 
@@ -11,44 +10,6 @@ CREATE TABLE analyses (
 	created_at DATETIME, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(variety_id) REFERENCES varieties (id)
-);
-CREATE TABLE companies (
-	id INTEGER NOT NULL, 
-	name VARCHAR NOT NULL, 
-	name_en VARCHAR, 
-	description TEXT, 
-	country VARCHAR, 
-	city VARCHAR, 
-	founded_year INTEGER, 
-	varieties VARCHAR, 
-	website VARCHAR, 
-	phone VARCHAR, 
-	rating FLOAT, 
-	featured BOOLEAN, 
-	PRIMARY KEY (id)
-);
-INSERT INTO "companies" VALUES(1,'الفوعة','Al Foah','شركة التمور الوطنية في الإمارات، إحدى علامات مجموعة أغذية. تصدّر لأكثر من 45 دولة وتدعم أكثر من 20 ألف مزارع.','الإمارات','العين',2005,'','https://www.agthia.com/brands/al-foah/','',NULL,1);
-INSERT INTO "companies" VALUES(2,'باتيل','Bateel','علامة تمور فاخرة، افتُتح أول بوتيك لها في الرياض عام 1991.','السعودية','الرياض',NULL,'','https://www.bateel.com/','',NULL,1);
-INSERT INTO "companies" VALUES(3,'تمارنا','Temarna','مصنع لتعبئة التمور في الأحساء.','السعودية','الأحساء',NULL,'','https://www.temarna.com/','',NULL,0);
-INSERT INTO "companies" VALUES(4,'مصنع تمور القصيم',NULL,'مصنع لتعبئة التمور في البدائع بمنطقة القصيم.','السعودية','البدائع',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(5,'باسقات القصيم',NULL,'مصنع لتعبئة التمور في بريدة.','السعودية','بريدة',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(6,'الإمتياز لمعالجة وتصنيع التمور',NULL,'مصنع لمعالجة التمور وتصنيعها في بريدة.','السعودية','بريدة',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(7,'تمارا',NULL,'مصنع لتعبئة التمور في الرياض.','السعودية','الرياض',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(8,'تمور العثمانية',NULL,'مصنع لتعبئة التمور في الرياض.','السعودية','الرياض',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(9,'أحد',NULL,'مصنع لتعبئة التمور في المنطقة الصناعية بالمدينة المنورة.','السعودية','المدينة المنورة',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(10,'الجزيرة',NULL,'مصنع لتعبئة التمور في الأحساء.','السعودية','الأحساء',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(11,'مواسم',NULL,'مصنع لتعبئة التمور في المبرز بالأحساء.','السعودية','المبرز',NULL,'','','',NULL,0);
-INSERT INTO "companies" VALUES(12,'تيماء',NULL,'مصنع لتعبئة التمور في تيماء.','السعودية','تيماء',NULL,'','','',NULL,0);
-CREATE TABLE suggestions (
-	id INTEGER NOT NULL, 
-	name VARCHAR NOT NULL, 
-	country VARCHAR, 
-	city VARCHAR, 
-	website VARCHAR, 
-	phone VARCHAR, 
-	status VARCHAR, 
-	created_at DATETIME, 
-	PRIMARY KEY (id)
 );
 CREATE TABLE varieties (
 	id INTEGER NOT NULL, 
